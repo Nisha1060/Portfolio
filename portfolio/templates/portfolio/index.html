@@ -1,0 +1,634 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-7">
+                <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-dark border border-secondary-subtle mb-3">
+                    <i class="fas fa-graduation-cap text-secondary"></i>
+                    <span class="small text-light">Northern University Bangladesh &bull; DEC 2024 - DEC 2027</span>
+                </div>
+
+                <h1 class="display-4 fw-extrabold mb-3">
+                    Hi, I'm <span class="brand-gradient-text">{{ profile.name }}</span>
+                </h1>
+
+                <h3 class="h4 text-light fw-medium mb-3">
+                    <span class="text-secondary fw-semibold">Computer Science & Engineering</span> Student &bull; Aspiring Data Scientist
+                </h3>
+
+                <p class="text-secondary lead fs-6 mb-4 pe-lg-4">
+                    {{ profile.bio }}
+                </p>
+
+                <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+                    <a href="#projects" class="btn btn-gradient-primary px-4 py-2 rounded-pill">
+                        <i class="fas fa-layer-group me-2"></i>Explore Projects
+                    </a>
+                    <a href="#demo" class="btn btn-outline-gradient px-4 py-2 rounded-pill">
+                        <i class="fas fa-bolt text-warning me-2"></i>Live ML Demo
+                    </a>
+                    <a href="#contact" class="btn btn-outline-secondary px-4 py-2 rounded-pill">
+                        <i class="fas fa-envelope me-2"></i>Contact Me
+                    </a>
+                </div>
+
+                <div class="d-flex flex-wrap align-items-center gap-4 pt-3 border-top border-secondary-subtle">
+                    <div>
+                        <small class="text-secondary d-block">Location</small>
+                        <span class="fw-semibold text-light"><i class="fas fa-map-marker-alt text-danger me-1"></i>{{ profile.location }}</span>
+                    </div>
+                    <div>
+                        <small class="text-secondary d-block">Email</small>
+                        <a href="mailto:{{ profile.email }}" class="fw-semibold text-light text-decoration-none">
+                            <i class="fas fa-envelope text-secondary me-1"></i>{{ profile.email }}
+                        </a>
+                    </div>
+                    <div>
+                        <small class="text-secondary d-block">Phone</small>
+                        <a href="tel:{{ profile.phone }}" class="fw-semibold text-light text-decoration-none">
+                            <i class="fas fa-phone-alt text-success me-1"></i>{{ profile.phone }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center">
+                <div class="avatar-wrapper">
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" alt="{{ profile.name }}" class="avatar-img shadow-lg">
+                    {% else %}
+                        <img src="{% static 'portfolio/images/profile.jpg' %}" alt="{{ profile.name }}" class="avatar-img shadow-lg">
+                    {% endif %}
+                    
+                    <div class="floating-badge text-start d-flex align-items-center gap-2">
+                        <div class="bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-white small">CGPA 3.75</div>
+                            <div class="text-secondary" style="font-size: 0.72rem;">B.Sc in CSE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats Bar -->
+<section class="py-4 bg-dark border-top border-bottom border-secondary-subtle">
+    <div class="container">
+        <div class="row text-center gy-3">
+            <div class="col-6 col-md-3">
+                <div class="h2 fw-bold text-gradient-brand mb-0">3.75</div>
+                <small class="text-secondary">Current CGPA</small>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="h2 fw-bold text-gradient-brand mb-0">Ostad</div>
+                <small class="text-secondary">Data Science Certified</small>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="h2 fw-bold text-gradient-brand mb-0">3+</div>
+                <small class="text-secondary">Data Science Projects</small>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="h2 fw-bold text-gradient-brand mb-0">Active</div>
+                <small class="text-secondary">Programming Contestant</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-user me-1"></i>Profile Overview
+            </span>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Passionate learner with a strong computational and statistical foundation, eager to tackle real-world challenges through data-driven intelligence.
+            </p>
+        </div>
+
+        <div class="row gy-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="card-custom h-100">
+                    <h4 class="fw-bold mb-3 text-light d-flex align-items-center gap-2">
+                        <i class="fas fa-laptop-code text-primary"></i>My Journey & Vision
+                    </h4>
+                    <p class="text-secondary">
+                        I am a Computer Science and Engineering student at Northern University Bangladesh with a solid academic foundation (CGPA 3.75). My primary passion lies at the intersection of data science, machine learning, and computational problem-solving.
+                    </p>
+                    <p class="text-secondary">
+                        Having completed the rigorous <strong>Ostad Data Science course</strong>, I have cultivated hands-on skills in Python programming, statistical modeling, probability theory, exploratory data analysis, and predictive machine learning with Scikit-learn.
+                    </p>
+                    <p class="text-secondary mb-0">
+                        I actively participate in competitive programming contests to refine my analytical thinking and algorithmic efficiency, and I hold a keen research curiosity in the field of <em>Collective Behaviour</em> in complex systems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row g-3 h-100">
+                    <div class="col-sm-6">
+                        <div class="card-custom h-100 p-4">
+                            <div class="fs-2 text-primary mb-2"><i class="fas fa-graduation-cap"></i></div>
+                            <h5 class="fw-bold text-light">Academic Excellence</h5>
+                            <p class="text-secondary small mb-0">
+                                Maintaining a 3.75 CGPA in CSE, building strong competencies in algorithms, discrete math, and software systems.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-custom h-100 p-4">
+                            <div class="fs-2 text-info mb-2"><i class="fas fa-chart-pie"></i></div>
+                            <h5 class="fw-bold text-light">Data Science Focus</h5>
+                            <p class="text-secondary small mb-0">
+                                Specializing in data wrangling, statistical inference, feature engineering, and unsupervised/supervised ML algorithms.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-custom h-100 p-4">
+                            <div class="fs-2 text-warning mb-2"><i class="fas fa-code-branch"></i></div>
+                            <h5 class="fw-bold text-light">Contest Programming</h5>
+                            <p class="text-secondary small mb-0">
+                                Regular participation in algorithmic programming contests to sharpen algorithmic speed and optimization skills.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-custom h-100 p-4">
+                            <div class="fs-2 text-success mb-2"><i class="fas fa-brain"></i></div>
+                            <h5 class="fw-bold text-light">Research Curiosity</h5>
+                            <p class="text-secondary small mb-0">
+                                Investigating Collective Behaviour, multi-agent dynamics, and how macroscopic intelligence emerges from local agents.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education & Certifications Section -->
+<section id="education" class="py-5 bg-dark">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-info-subtle text-info border border-info-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-book-open me-1"></i>Academic Background
+            </span>
+            <h2 class="section-title">Education & Certifications</h2>
+            <p class="section-subtitle">
+                My formal academic degrees and specialized professional credentials in Computer Science and Data Science.
+            </p>
+        </div>
+
+        <div class="row gy-4">
+            <!-- Education Cards -->
+            <div class="col-lg-7">
+                <h4 class="fw-bold mb-4 text-light"><i class="fas fa-university text-primary me-2"></i>Formal Education</h4>
+                {% for edu in education_list %}
+                    <div class="card-custom mb-3 p-4">
+                        <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                            <div>
+                                <h5 class="fw-bold text-light mb-1">{{ edu.degree }}</h5>
+                                <div class="text-secondary fw-medium">{{ edu.institution }}</div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill font-mono">{{ edu.duration }}</span>
+                                <div class="badge bg-success-subtle text-success border border-success-subtle rounded-pill mt-1">
+                                    CGPA: <strong>{{ edu.cgpa }}</strong> / 4.00
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-secondary small mb-0 mt-3">
+                            {{ edu.description }}
+                        </p>
+                    </div>
+                {% empty %}
+                    <div class="card-custom p-4">
+                        <h5 class="fw-bold text-light">Bachelor of Computer Science and Engineering</h5>
+                        <p class="text-secondary">Northern University Bangladesh &bull; DEC 2024 - DEC 2027 &bull; CGPA: 3.75</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Certifications Cards -->
+            <div class="col-lg-5">
+                <h4 class="fw-bold mb-4 text-light"><i class="fas fa-certificate text-warning me-2"></i>Professional Certifications</h4>
+                {% for cert in certifications %}
+                    <div class="card-custom p-4 mb-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h5 class="fw-bold text-light mb-0">{{ cert.title }}</h5>
+                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill">
+                                {{ cert.issuer }}
+                            </span>
+                        </div>
+                        <div class="text-secondary small font-mono mb-3">
+                            <i class="far fa-calendar-alt me-1"></i>{{ cert.issue_date }}
+                        </div>
+                        <p class="text-secondary small mb-0">
+                            {{ cert.description }}
+                        </p>
+                    </div>
+                {% empty %}
+                    <div class="card-custom p-4">
+                        <h5 class="fw-bold text-light">Ostad Data Science Course</h5>
+                        <p class="text-secondary">Completed comprehensive coursework covering Python, Statistics, Probability, EDA, and Scikit-learn.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills & Competencies Section -->
+<section id="skills" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-microchip me-1"></i>Technical Toolkit
+            </span>
+            <h2 class="section-title">Skills & Proficiencies</h2>
+            <p class="section-subtitle">
+                Core technical proficiencies spanning programming languages, data manipulation frameworks, machine learning, and statistical analysis.
+            </p>
+        </div>
+
+        <div class="row gy-4">
+            {% for category in categories %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom h-100">
+                        <div class="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom border-secondary-subtle">
+                            <i class="{{ category.icon }} text-primary fs-5"></i>
+                            <h5 class="fw-bold text-light mb-0">{{ category.name }}</h5>
+                        </div>
+
+                        <div class="d-flex flex-column gap-3">
+                            {% for skill in category.skills.all %}
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="text-light fw-medium small">
+                                            {% if skill.icon %}<i class="{{ skill.icon }} me-1 text-secondary"></i>{% endif %}
+                                            {{ skill.name }}
+                                        </span>
+                                        <span class="text-secondary small font-mono">{{ skill.proficiency }}%</span>
+                                    </div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar-custom" style="width: {{ skill.proficiency }}%;"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1">
+                                        <span class="text-secondary" style="font-size: 0.7rem;">{{ skill.level }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Projects Showcase Section -->
+<section id="projects" class="py-5 bg-dark">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-folder-open me-1"></i>Portfolio Work
+            </span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Real-world practical implementations extracted from my CV, demonstrating data modeling, exploratory analytics, and machine learning.
+            </p>
+        </div>
+
+        <div class="row gy-4">
+            {% for project in projects %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-custom project-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1">
+                                    {{ project.get_category_display }}
+                                </span>
+                                {% if project.slug == 'customer-segmentation-rfm-kmeans' %}
+                                    <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill">
+                                        <i class="fas fa-play-circle me-1"></i>Interactive Demo
+                                    </span>
+                                {% endif %}
+                            </div>
+
+                            <h5 class="fw-bold text-light mb-2">{{ project.title }}</h5>
+                            <p class="text-secondary small mb-3 flex-grow-1">
+                                {{ project.short_description }}
+                            </p>
+
+                            <div class="mb-4">
+                                <div class="text-secondary small mb-2 fw-semibold">Tech Stack:</div>
+                                <div class="d-flex flex-wrap">
+                                    {% for tech in project.get_tech_list %}
+                                        <span class="tech-tag">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary-subtle">
+                                <a href="{% url 'portfolio:project_detail' project.slug %}" class="btn btn-sm btn-outline-light rounded-pill px-3">
+                                    <i class="fas fa-arrow-right me-1"></i>Details
+                                </a>
+                                {% if project.live_demo_url %}
+                                    <a href="{{ project.live_demo_url }}" class="btn btn-sm btn-gradient-primary rounded-pill px-3">
+                                        <i class="fas fa-bolt me-1"></i>Try Live
+                                    </a>
+                                {% else %}
+                                    <a href="{{ project.github_url }}" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                                        <i class="fab fa-github me-1"></i>Code
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Live Machine Learning Demonstration -->
+<section id="demo" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-robot me-1"></i>Live Django & ML Showcase
+            </span>
+            <h2 class="section-title">Interactive Customer Segmentation Demo</h2>
+            <p class="section-subtitle">
+                Test my <strong>RFM & K-Means Clustering</strong> project live! Adjust customer behavior metrics below or select presets to run real-time cluster assignments and view the dynamic scatter plot.
+            </p>
+        </div>
+
+        <div class="demo-box">
+            <div class="row gy-4">
+                <!-- Left: Controls & Preset Inputs -->
+                <div class="col-lg-5">
+                    <h5 class="fw-bold text-light mb-3">
+                        <i class="fas fa-sliders text-secondary me-2"></i>RFM Input Parameters
+                    </h5>
+
+                    <!-- Quick Preset Personas -->
+                    <div class="mb-4">
+                        <small class="text-secondary d-block mb-2">Or pick a customer persona:</small>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill preset-btn" data-recency="15" data-frequency="35" data-monetary="3200">
+                                🌟 VIP Champion
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill preset-btn" data-recency="45" data-frequency="15" data-monetary="1200">
+                                💼 Loyal Shopper
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill preset-btn" data-recency="20" data-frequency="3" data-monetary="350">
+                                🌱 New Buyer
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill preset-btn" data-recency="240" data-frequency="2" data-monetary="200">
+                                ⚠️ At-Risk / Lapsed
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recency Slider -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label class="form-label text-light small mb-0 fw-semibold">
+                                <i class="far fa-clock text-info me-1"></i>Recency (Days since last order)
+                            </label>
+                            <span id="recencyVal" class="slider-val-badge">25 days</span>
+                        </div>
+                        <input type="range" class="form-range" id="recencySlider" min="1" max="365" value="25">
+                        <div class="d-flex justify-content-between text-secondary" style="font-size: 0.72rem;">
+                            <span>1 day (recent)</span>
+                            <span>365 days (inactive)</span>
+                        </div>
+                    </div>
+
+                    <!-- Frequency Slider -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label class="form-label text-light small mb-0 fw-semibold">
+                                <i class="fas fa-shopping-cart text-primary me-1"></i>Frequency (Total Orders)
+                            </label>
+                            <span id="frequencyVal" class="slider-val-badge">12 orders</span>
+                        </div>
+                        <input type="range" class="form-range" id="frequencySlider" min="1" max="50" value="12">
+                        <div class="d-flex justify-content-between text-secondary" style="font-size: 0.72rem;">
+                            <span>1 order</span>
+                            <span>50 orders</span>
+                        </div>
+                    </div>
+
+                    <!-- Monetary Slider -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label class="form-label text-light small mb-0 fw-semibold">
+                                <i class="fas fa-dollar-sign text-success me-1"></i>Monetary Value (Total Spend)
+                            </label>
+                            <span id="monetaryVal" class="slider-val-badge">$850</span>
+                        </div>
+                        <input type="range" class="form-range" id="monetarySlider" min="20" max="5000" step="10" value="850">
+                        <div class="d-flex justify-content-between text-secondary" style="font-size: 0.72rem;">
+                            <span>$20</span>
+                            <span>$5,000</span>
+                        </div>
+                    </div>
+
+                    <button id="runMlBtn" class="btn btn-gradient-primary w-100 py-2 rounded-pill fw-semibold">
+                        <i class="fas fa-play me-2"></i>Run Real-Time ML Segmentation
+                    </button>
+                </div>
+
+                <!-- Right: Prediction Result & Chart -->
+                <div class="col-lg-7">
+                    <!-- Predicted Cohort Result Banner -->
+                    <div class="prediction-highlight-card mb-4">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                            <div>
+                                <small class="text-secondary text-uppercase fw-bold letter-spacing-1" style="font-size: 0.75rem;">Predicted Cohort</small>
+                                <h4 id="predSegmentName" class="fw-bold mb-0 text-success">Champions (VIP)</h4>
+                            </div>
+                            <span id="predSegmentBadge" class="badge bg-success px-3 py-2 fs-6 rounded-pill">Champions</span>
+                        </div>
+
+                        <div id="predInputEcho" class="small text-secondary mb-2">
+                            Customer Metrics: 25 days &bull; 12 orders &bull; $850 spend
+                        </div>
+
+                        <div class="p-2 rounded bg-dark border border-secondary-subtle">
+                            <span class="text-secondary small fw-semibold"><i class="fas fa-lightbulb text-warning me-1"></i>Strategic Recommendation:</span>
+                            <span id="predAdvice" class="small text-light ms-1">High value and active customer. Reward with exclusive VIP perks.</span>
+                        </div>
+                    </div>
+
+                    <!-- Chart.js Scatter Visualization -->
+                    <div class="p-3 rounded-4" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); height: 280px; position: relative;">
+                        <canvas id="clusterChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cluster Cohorts Summary Row -->
+            <div class="row g-3 mt-4 pt-3 border-top border-secondary-subtle" id="clusterStatsContainer">
+                <!-- Dynamically populated by JS with live cluster stats -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Extracurricular Activities & Research Section -->
+<section id="activities" class="py-5 bg-dark">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-secondary-subtle text-light border border-secondary-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-compass me-1"></i>Beyond The Classroom
+            </span>
+            <h2 class="section-title">Activities & Research Interests</h2>
+            <p class="section-subtitle">
+                My active participation in algorithmic competitions and ongoing intellectual curiosity in complex emergent dynamics.
+            </p>
+        </div>
+
+        <div class="row gy-4">
+            {% for act in activities %}
+                <div class="col-md-6">
+                    <div class="card-custom h-100 p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-primary text-white rounded-circle p-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+                                <i class="{{ act.icon }} fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold text-light mb-1">{{ act.title }}</h5>
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill small">
+                                    {{ act.category }}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-secondary mb-0">
+                            {{ act.description }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2 mb-2">
+                <i class="fas fa-envelope-open-text me-1"></i>Let's Connect
+            </span>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Have an entry-level opportunity, project collaboration, or research question? Feel free to reach out anytime!
+            </p>
+        </div>
+
+        <div class="row gy-5">
+            <!-- Contact Info Column -->
+            <div class="col-lg-5">
+                <h4 class="fw-bold text-light mb-4">Contact Information</h4>
+
+                <div class="contact-info-pill">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <small class="text-secondary d-block">Email Address</small>
+                        <a href="mailto:{{ profile.email }}" class="fw-semibold text-light text-decoration-none">
+                            {{ profile.email }}
+                        </a>
+                    </div>
+                    <button class="btn btn-sm btn-dark text-secondary" id="copyEmailBtn" onclick="copyText('{{ profile.email }}', 'copyEmailBtn')" title="Copy Email">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="contact-info-pill">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <small class="text-secondary d-block">Phone Number</small>
+                        <a href="tel:{{ profile.phone }}" class="fw-semibold text-light text-decoration-none">
+                            {{ profile.phone }}
+                        </a>
+                    </div>
+                    <button class="btn btn-sm btn-dark text-secondary" id="copyPhoneBtn" onclick="copyText('{{ profile.phone }}', 'copyPhoneBtn')" title="Copy Phone">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="contact-info-pill">
+                    <div class="contact-icon-wrapper">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <small class="text-secondary d-block">Location</small>
+                        <span class="fw-semibold text-light">{{ profile.location }}</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 rounded-4" style="background: rgba(99, 102, 241, 0.08); border: 1px dashed rgba(99, 102, 241, 0.3);">
+                    <h6 class="fw-bold text-light mb-2"><i class="fas fa-briefcase text-secondary me-2"></i>Open For:</h6>
+                    <ul class="text-secondary small mb-0 ps-3">
+                        <li>Data Science & Machine Learning Internships</li>
+                        <li>Entry-level Python & Analytics Positions</li>
+                        <li>Research Collaborations on Collective Behaviour</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Form Column -->
+            <div class="col-lg-7">
+                <div class="card-custom p-4 p-md-5">
+                    <h4 class="fw-bold text-light mb-4">Send a Direct Message</h4>
+                    <form method="POST" action="{% url 'portfolio:contact' %}">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-medium">Your Name *</label>
+                                <input type="text" name="name" class="form-control form-control-custom" placeholder="e.g. John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-secondary small fw-medium">Your Email *</label>
+                                <input type="email" name="email" class="form-control form-control-custom" placeholder="e.g. john@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-secondary small fw-medium">Subject</label>
+                                <input type="text" name="subject" class="form-control form-control-custom" placeholder="e.g. Project Opportunity / Interview Inquiry">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-secondary small fw-medium">Message *</label>
+                                <textarea name="message" rows="5" class="form-control form-control-custom" placeholder="Write your message here..." required></textarea>
+                            </div>
+                            <div class="col-12 pt-2">
+                                <button type="submit" class="btn btn-gradient-primary px-5 py-2 rounded-pill fw-semibold">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

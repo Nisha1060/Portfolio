@@ -1,0 +1,119 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} | Project Case Study - {{ site_profile.name }}{% endblock %}
+
+{% block content %}
+<section class="py-5" style="padding-top: 120px !important;">
+    <div class="container py-4">
+        <!-- Back Navigation -->
+        <div class="mb-4">
+            <a href="/#projects" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                <i class="fas fa-arrow-left me-1"></i>Back to All Projects
+            </a>
+        </div>
+
+        <div class="row gy-5">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1">
+                        {{ project.get_category_display }}
+                    </span>
+                    <span class="text-secondary small font-mono">
+                        <i class="far fa-calendar-alt me-1"></i>{{ project.created_at|date:"F Y" }}
+                    </span>
+                </div>
+
+                <h1 class="display-5 fw-bold text-light mb-4">{{ project.title }}</h1>
+
+                <div class="lead text-secondary mb-4">
+                    {{ project.short_description }}
+                </div>
+
+                <div class="card-custom p-4 mb-4">
+                    <h4 class="fw-bold text-light mb-3"><i class="fas fa-microscope text-primary me-2"></i>Detailed Case Study & Methodology</h4>
+                    <p class="text-secondary" style="white-space: pre-line; line-height: 1.8;">
+                        {{ project.description }}
+                    </p>
+                </div>
+
+                {% if project.slug == 'customer-segmentation-rfm-kmeans' %}
+                    <div class="p-4 rounded-4 mb-4" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25);">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                            <div>
+                                <h5 class="fw-bold text-emerald mb-1"><i class="fas fa-bolt me-2"></i>Interactive Demonstration Available!</h5>
+                                <p class="text-secondary small mb-0">Experience this unsupervised learning model in real-time right on the homepage.</p>
+                            </div>
+                            <a href="/#demo" class="btn btn-sm btn-outline-gradient rounded-pill px-4 py-2">
+                                Launch Real-Time ML Demo
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Analytical Highlights -->
+                <div class="card-custom p-4">
+                    <h5 class="fw-bold text-light mb-3"><i class="fas fa-check-circle text-success me-2"></i>Key Project Highlights</h5>
+                    <ul class="text-secondary mb-0 ps-3">
+                        <li class="mb-2"><strong>Data Preprocessing:</strong> Handled null attributes, formatted timestamps, and standardized features for mathematical consistency.</li>
+                        <li class="mb-2"><strong>Exploratory Data Analysis:</strong> Inspected statistical distribution moments, outlier boundaries, and correlation matrices.</li>
+                        <li class="mb-2"><strong>Model & Analytical Pipeline:</strong> Designed modular Python code using Pandas, NumPy, and Scikit-learn for reproducible results.</li>
+                        <li><strong>Actionable Insights:</strong> Converted raw statistical metrics into intuitive visual charts and decision-making criteria.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card-custom p-4 mb-4 sticky-top" style="top: 100px;">
+                    <h5 class="fw-bold text-light mb-3">Project Metadata</h5>
+
+                    <div class="mb-4">
+                        <small class="text-secondary d-block mb-2 fw-semibold">Technologies Utilized</small>
+                        <div class="d-flex flex-wrap">
+                            {% for tech in project.get_tech_list %}
+                                <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <small class="text-secondary d-block mb-1 fw-semibold">Domain / Classification</small>
+                        <span class="text-light">{{ project.get_category_display }}</span>
+                    </div>
+
+                    <div class="d-grid gap-2 pt-2 border-top border-secondary-subtle">
+                        {% if project.live_demo_url %}
+                            <a href="{{ project.live_demo_url }}" class="btn btn-gradient-primary rounded-pill py-2">
+                                <i class="fas fa-bolt me-2"></i>Live Interactive Demo
+                            </a>
+                        {% endif %}
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-secondary rounded-pill py-2">
+                            <i class="fab fa-github me-2"></i>View Source Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Related Projects -->
+                {% if related_projects %}
+                    <div class="card-custom p-4">
+                        <h6 class="fw-bold text-light mb-3">Other Projects</h6>
+                        <div class="d-flex flex-column gap-3">
+                            {% for rel in related_projects %}
+                                <a href="{% url 'portfolio:project_detail' rel.slug %}" class="text-decoration-none">
+                                    <div class="p-2 rounded hover-bg-dark border border-secondary-subtle">
+                                        <div class="text-light fw-medium small mb-1">{{ rel.title }}</div>
+                                        <span class="badge bg-dark text-secondary border border-secondary-subtle" style="font-size: 0.7rem;">
+                                            {{ rel.get_category_display }}
+                                        </span>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

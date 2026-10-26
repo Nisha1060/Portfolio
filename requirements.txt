@@ -1,0 +1,25 @@
+# ====================================================================
+# Nisha Rani Singha - Portfolio Website Requirements
+# Computer Science & Engineering | Data Science & Machine Learning
+# ====================================================================
+
+# Core Web Framework
+Django==6.1.2
+asgiref==3.13.0
+sqlparse==0.6.0
+
+# Image Processing (Django ImageField & Profile Pictures)
+pillow==12.3.0
+
+# Data Science & Analytics (From CV Skills: NumPy, Pandas, EDA)
+numpy==2.5.1
+pandas==3.0.3
+
+# Machine Learning & Scientific Computing (From CV: Scikit-learn, Statistics, RFM Clustering)
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+
+# Data Visualization (EDA and Analytical Plotting)
+matplotlib==3.11.1
+seaborn==0.13.2
